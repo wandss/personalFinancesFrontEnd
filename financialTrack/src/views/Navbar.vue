@@ -97,9 +97,7 @@ export default{
     },
     getAppData(){
       this.$http.get(this.$urls.frontend.appData)
-        .then((resp)=>{this.appData=resp.data
-          console.log(resp.data)
-        })
+        .then((resp)=>this.appData=resp.data[0])
         .catch(error=>console.log(error))
     }
   }

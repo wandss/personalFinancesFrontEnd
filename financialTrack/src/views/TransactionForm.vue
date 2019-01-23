@@ -179,7 +179,7 @@ export default{
         })
       //options retrieves metadata. Use this to create form?
       this.$http.options(this.$urls.transactions.expenseTypes)
-        .then(resp=>{
+        .then(()=>{
             //console.log(resp.data.POST.label)
         })
     },
@@ -221,7 +221,7 @@ export default{
         //Triggers an update on expense type.
         const id = this.expenseTypeIdToUpdate;
         this.$http.put(this.$urls.transactions.expenseTypes+id, data)
-          .then(resp=>{
+          .then(()=>{
             this.getExpenseTypes();
             this.addExpenseType = false;
             this.selectedExpenseType='';
@@ -233,7 +233,7 @@ export default{
       else{
         //Creates a new expense type.
         this.$http.post(this.$urls.transactions.expenseTypes, data)
-          .then(resp =>{
+          .then(()=>{
             this.getExpenseTypes();
             this.addExpenseType = false;
           })
@@ -276,7 +276,7 @@ export default{
         data.dt_transaction)
 
       this.$http.post(this.$urls.transactions.transactions, data)
-        .then(resp=>{
+        .then(()=>{
           this.getTransactionForm();
           this.getExpenseTypes();
           this.getOperationTypes();
@@ -301,7 +301,7 @@ export default{
         data.dt_transaction)
 
       this.$http.put(this.$urls.transactions.transactions+id, data)
-        .then(resp=>{
+        .then(()=>{
           //TODO:Add updated value to store?
           this.$router.push({name:'home'})
         })

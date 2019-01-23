@@ -1,35 +1,35 @@
 <!--Change this component name to MenuItems-->
 <template>
-    <div id="accordion">
-        <div class="card" v-for="item in accordionData">
-            <div v-for="(v, k) in item" :key="k">
-                <div :class="['card-header', {'primary':k === selected }]"
-                 @click="selected = k" >
-                    {{k}}
-                    <span
-                     :class="'fa fa-chevron-'+(k === selected?'up':'down')"
-                     id="icon">
-                    </span>
-                </div>
-
-                <div :class="[k===selected?'appearEffect':'hideEffect']">
-                    <div class="card-body" v-show="k === selected" >
-                        <ul v-if="Array.isArray(v)">
-                            <li v-for="innerItem in v" :key="innerItem"
-                             @click="handleClick(innerItem)"
-                             @mouseover="hoveringItemName=innerItem"
-                             >
-                                {{innerItem}}
-                            </li>
-                        </ul>
-                        <h6 class="card-title" v-else @click="handleClick(v)">
-                            {{v}}
-                        </h6>
-                    </div>
-                </div>
-            </div>
+  <div id="accordion">
+    <div class="card" v-for="(item, index) in accordionData" :key="index">
+      <div v-for="(v, k) in item" :key="k">
+        <div :class="['card-header', {'primary':k === selected }]"
+         @click="selected = k" >
+            {{k}}
+          <span
+           :class="'fa fa-chevron-'+(k === selected?'up':'down')"
+           id="icon">
+          </span>
         </div>
+
+        <div :class="[k===selected?'appearEffect':'hideEffect']">
+          <div class="card-body" v-show="k === selected" >
+            <ul v-if="Array.isArray(v)">
+              <li v-for="innerItem in v" :key="innerItem"
+               @click="handleClick(innerItem)"
+               @mouseover="hoveringItemName=innerItem"
+               >
+                {{innerItem}}
+              </li>
+            </ul>
+            <h6 class="card-title" v-else @click="handleClick(v)">
+              {{v}}
+            </h6>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 <script>
 export default{

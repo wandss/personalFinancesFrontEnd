@@ -1,15 +1,15 @@
 <template>
-    <transition name="smMenuSlide">
-        <div v-show="show">
-            <div id="menu-sm">
-                <h6 v-for="item in items" :key="item.name" @click="$emit('click',item.event)">
-                    <span v-if="item.icon" :class="item.icon">
-                    </span>
-                    {{item.name}}
-                </h6>
-            </div>
-        </div>
-    </transition>
+  <transition name="smMenuSlide">
+    <div v-show="show">
+      <div id="menu-sm">
+        <h6 v-for="item in items" :key="item.name" @click="$emit('click',item.event)">
+          <span v-if="item.icon" :class="item.icon">
+          </span>
+          {{item.name}}
+        </h6>
+      </div>
+    </div>
+  </transition>
 </template>
 <script>
 export default{
