@@ -175,13 +175,18 @@ export default{
             this.expenseTypesList = resp.data
         })
         .catch(error=>{
-            console.log(error.response.data)
+          if(error.response.status === 401){
+            this.$router.push({name:'login'})
+          }
+          console.log(error.response.data)
         })
       //options retrieves metadata. Use this to create form?
+      /*
       this.$http.options(this.$urls.transactions.expenseTypes)
         .then(()=>{
             //console.log(resp.data.POST.label)
         })
+        */
     },
     getOperationTypes(){
       this.$http.get(this.$urls.transactions.operationTypes)
@@ -213,7 +218,12 @@ export default{
           this.fillForm()
         }
       })
-      .catch(error=>console.log(error.response))
+      .catch(error=>{
+        if(error.response.status === 401){
+          this.$router.push({name:'login'})
+        }
+        console.log(error.response)
+      })
     },
     createUpdateExpenseType(e){
       const data = {label:this.newExpenseType}
@@ -228,7 +238,12 @@ export default{
             this.expenseTypeIdToUpdate = '';
             this.newExpenseType = '';
           })
-          .catch(error=>console.log(error.response))
+          .catch(error=>{
+            if(error.response.status === 401){
+              this.$router.push({name:'login'})
+            }
+            console.log(error.response)
+          })
       }
       else{
         //Creates a new expense type.
@@ -238,6 +253,9 @@ export default{
             this.addExpenseType = false;
           })
           .catch(error => {
+            if(error.response.status === 401){
+              this.$router.push({name:'login'})
+            }
             this.alert.show = true;
             this.alert.content= error.response.data
             this.alert.title = "Attention!"
@@ -245,8 +263,6 @@ export default{
           })
         this.newExpenseType = '';
       }
-
-
       if(e!==undefined){
         e.target.reset()
       }
@@ -285,6 +301,10 @@ export default{
           this.$refs.main_form.reset()
         })
         .catch(error=>{
+
+          if(error.response.status === 401){
+            this.$router.push({name:'login'})
+          }
           this.alert.show = true;
           this.alert.content = error.response.data.detail !== undefined?
               error.response.data.detail:error.response.data
@@ -306,6 +326,9 @@ export default{
           this.$router.push({name:'home'})
         })
         .catch(error=>{
+          if(error.response.status === 401){
+            this.$router.push({name:'login'})
+          }
           this.alert.show = true;
           this.alert.content = error.response.data.detail !== undefined?
               error.response.data.detail:error.response.data
@@ -377,6 +400,9 @@ export default{
           this.expenseTypesList.splice(index, 1)
         })
         .catch(error=>{
+          if(error.response.status === 401){
+            this.$router.push({name:'login'})
+          }
           console.log(error.response.data)
           this.alert.show = true;
           this.alert.cssClass = 'danger';

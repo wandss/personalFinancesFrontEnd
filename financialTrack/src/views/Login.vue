@@ -49,7 +49,7 @@ export default{
         to local storage, then goes to home view*/
       this.$store.commit('setShowLoader', true)
       const data = {username:this.username, password:this.passwd}
-      this.$http.post(this.$urls.auth.customLogin, data )
+      this.$http.post(this.$urls.auth.login, data )
         .then(resp=>{
           this.$store.commit('setIsAuthenticated', true)
           this.$http.defaults.headers.common['Authorization']='JWT '+

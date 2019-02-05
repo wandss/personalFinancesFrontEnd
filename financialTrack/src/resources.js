@@ -2,7 +2,7 @@ const baseUrl = '/api/v1';
 const urls = {
   auth:{
     login:baseUrl+'/auth/',
-    customLogin:baseUrl+'/token/',
+    //customLogin:baseUrl+'/token/',
   },
   frontend:{
     mainMenu:baseUrl+'/frontend/mainmenu/',
