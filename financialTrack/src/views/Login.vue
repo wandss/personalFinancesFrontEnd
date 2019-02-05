@@ -55,6 +55,8 @@ export default{
           this.$http.defaults.headers.common['Authorization']='JWT '+
             resp.data.token
           window.localStorage.setItem('token', resp.data.token)
+          window.localStorage.setItem('username', this.username)
+          this.$store.commit('setUsername', this.username)
           this.$router.push({name:'home'})
           this.$store.commit('setShowLoader', false)
         })

@@ -5,11 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isAuthenticated:false,
-    transaction:null,
-    transactionDate:{year:null, month:null},
-    smallScreen:false,
-    showLoader:true,
+    isAuthenticated: false,
+    transaction: null,
+    transactionDate: {year: null, month: null},
+    smallScreen: false,
+    showLoader: true,
+    username: window.localStorage.getItem('username'),
   },
   mutations: {
     setIsAuthenticated(state, payload){
@@ -26,9 +27,12 @@ export default new Vuex.Store({
     },
     setShowLoader(state, payload){
       state.showLoader = payload
+    },
+    setUsername(state, payload){
+      state.username = payload
     }
   },
-  actions:{
+  actions: {
 
   }
 })
