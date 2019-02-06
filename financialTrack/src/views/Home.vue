@@ -117,9 +117,11 @@ export default {
         {id:'parcels',colName:'Info', hidden:true},
         {id:'expense',colName:'Info', hidden:true},
         {id:'operation_type',colName:'Info', hidden:true},
+        {id:'operation_type_label',colName:'Operation Type', hidden:false},
         {id:'expense_label',colName:'Expense', hidden:true},
         {id:'amount',colName:'Value', hidden:false},
         {id:'dt_transaction',colName:'Date', hidden:false},
+        {id:'estabelecimento',colName:'Establishment', hidden:false},
       ],
       gridActions:[
         {title:'Edit', icon:'fa fa-edit', event:function edit(){}},
@@ -230,6 +232,8 @@ export default {
         +year+'/month/'+month)
         .then(resp=>{
           this.gridData = resp.data
+          this.gridData.map(item=>
+            item.dt_transaction = new Date(item.dt_transaction).toLocaleString())
           this.transactionCardHeader = ("Transactions: "+
               this.$moment.months(month-1) +' '+ year.toString())
           this.$store.commit('setShowLoader', false)
