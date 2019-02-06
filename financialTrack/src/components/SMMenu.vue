@@ -37,6 +37,7 @@ export default{
     padding-left:2rem;
     padding-top:1rem;
     padding-bottom:1rem;
+    border-top:1px solid #666;
 }
 .smMenuSlide-enter-active, .smMenuSlide-leave-active{
     transition:all .3s;

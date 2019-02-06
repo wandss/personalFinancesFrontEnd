@@ -86,8 +86,12 @@ export default{
     }
   },
   mounted(){
-    this.smItems.push({name:'Logout', icon:'fa fa-sign-out-alt',
-      event:()=>this.showModalConfirm=!this.showModalConfirm})
+    const logout = 'Logout ('+this.$store.state.username+')'
+
+    this.smItems.push(
+      {name: logout, icon: 'fa fa-sign-out-alt',
+        event:()=>this.showModalConfirm=!this.showModalConfirm},
+    )
     this.getAppData()
   },
   methods:{
